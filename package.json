@@ -6,7 +6,7 @@
     "lib": "lib"
   },
   "scripts": {
-    "linkcheck": "link-checker ./"
+    "linkcheck": "blc https://akashic-games.github.io/ -ro"
   },
   "repository": {
     "type": "git",
@@ -20,6 +20,7 @@
   },
   "homepage": "https://github.com/akashic-games/akashic-games.github.io#readme",
   "devDependencies": {
+    "broken-link-checker": "^0.7.8",
     "link-checker": "^1.4.2"
   }
 }
