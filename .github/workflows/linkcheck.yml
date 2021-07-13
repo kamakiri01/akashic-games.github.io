@@ -21,4 +21,4 @@ jobs:
       - name: linkcheck
         run: |
           npm install
-          npm run linkcheck | grep "page not found"
+          npm run linkcheck | grep BROKEN --color=auto
