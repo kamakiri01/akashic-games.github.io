@@ -1,0 +1,24 @@
+name: linktest
+
+on: [push, pull_request]
+
+jobs:
+  build:
+    runs-on: ${{ matrix.os }}
+    name: Node ${{ matrix.node }} / ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [ubuntu-latest]
+        node: [14.x]
+    steps:
+      - uses: actions/setup-node@v2
+        with:
+          node-version: ${{ matrix.node }}
+      - name: Checkout code
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+      - name: linkcheck
+        run: |
+          npm install
+          npm run linkcheck | grep "page not found"
