@@ -6,7 +6,7 @@
     "lib": "lib"
   },
   "scripts": {
-    "linkcheck": "blc https://akashic-games.github.io/reference/akashic-timeline/ -o"
+    "linkcheck": "blc https://akashic-games.github.io/reference/akashic-timeline/ -o --requests 1"
   },
   "repository": {
     "type": "git",
