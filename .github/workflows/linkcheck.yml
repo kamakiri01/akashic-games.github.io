@@ -22,15 +22,13 @@ jobs:
         id: linkcheck
         run: |
           npm install
-          BROKENS = `npm run linkcheck | grep BROKEN --color=auto`
-          echo "::set-output name=BROKENS::$BROKENS"
+          RESULT = `npm run linkcheck | grep BROKEN`
+          echo "::set-output name=RESULT::$RESULT"
       - name: hoge
-        uses: actions/github-script@0.8.0
+        uses: JasonEtco/create-an-issue@v2
+        if: steps.linkcheck.outcome == 'failure'
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          RESULT: ${{ env.RESULT }} # テンプレート内で {{ env.XXX }} の形式で値を参照
         with:
-          script: |
-            github.issues.createComment({
-              issue_number: context.issue.number,
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              body: BROKENS
-            })         
+          filename: .github/linkcheck.md    
