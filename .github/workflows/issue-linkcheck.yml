@@ -22,8 +22,7 @@ jobs:
         id: linkcheck
         run: |
           npm install
-          RESULT = `npm run linkcheck`
-          echo "::set-output name=RESULT::$RESULT"
+          echo "::set-output name=RESULT::$(npm run linkcheck)"
         continue-on-error: true
       - name: issue
         uses: JasonEtco/create-an-issue@v2
