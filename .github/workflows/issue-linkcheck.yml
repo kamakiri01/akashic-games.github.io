@@ -30,6 +30,6 @@ jobs:
         if: steps.linkcheck.outcome == 'failure'
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          RESULT: ${{ env.RESULT }} # テンプレート内で {{ env.XXX }} の形式で値を参照
+          RESULT: ${{ steps.linkheck.outputs.RESULT }} # テンプレート内で {{ env.XXX }} の形式で値を参照
         with:
           filename: .github/issue-linkcheck.md    
