@@ -31,7 +31,6 @@ jobs:
           echo "::set-output name=BROKEN_RESULT::$BROKEN_RESULT"
       - name: issue
         uses: JasonEtco/create-an-issue@v2
-        if: steps.linkcheck.outcome == 'failure'
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           RESULT: ${{ steps.result.outputs.BROKEN_RESULT }} # テンプレート内で {{ env.XXX }} の形式で値を参照
