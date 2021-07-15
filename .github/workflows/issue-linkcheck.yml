@@ -32,4 +32,4 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           RESULT: ${{ env.RESULT }} # テンプレート内で {{ env.XXX }} の形式で値を参照
         with:
-          filename: .github/linkcheck.md    
+          filename: .github/issue-linkcheck.md    
