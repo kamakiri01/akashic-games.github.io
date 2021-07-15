@@ -27,13 +27,13 @@ jobs:
       - name: grep-result
         id: result
         run: |
-          BROKEN_RESULT="$(cat ./out/link_check_result.txt | grep BROKEN)"
-          BROKEN_RESULT="${BROKEN_RESULT//$'\n'/\\n}"
+          BROKEN_RESULT="$(cat ./out/link_check_result.txt)"
+          BROKEN_RESULT="${BROKEN_RESULT//$'\n'/'%0A'}"
           echo "::set-output name=BROKEN_RESULT::$BROKEN_RESULT"
       - name: issue
         uses: JasonEtco/create-an-issue@v2
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          RESULT: ${ cat ./out/link_check_result.txt }
+          RESULT: ${{ steps.result.outputs.BROKEN_RESULT }}
         with:
           filename: .github/issue-linkcheck.md
