@@ -22,7 +22,7 @@ jobs:
         id: linkcheck
         run: |
           npm install
-          RESULT = `npm run linkcheck | grep BROKEN`
+          RESULT = `npm run linkcheck`
           echo "::set-output name=RESULT::$RESULT"
         continue-on-error: true
       - name: issue
