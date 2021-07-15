@@ -21,6 +21,7 @@ jobs:
       - name: linkcheck
         run: |
           npm install
+          mkdir ./out
           RESULT = `npm run linkcheck > ./out/check_link_result.txt`
         continue-on-error: true
       - name: grep-result
