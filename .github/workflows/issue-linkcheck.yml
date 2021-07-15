@@ -28,6 +28,7 @@ jobs:
         id: result
         run: |
           BROKEN_RESULT="$(cat ./out/link_check_result.txt | grep BROKEN)"
+          BROKEN_RESULT="${BROKEN_RESULT//$'\n'/\\n}"
           echo "::set-output name=BROKEN_RESULT::$BROKEN_RESULT"
       - name: issue
         uses: JasonEtco/create-an-issue@v2
