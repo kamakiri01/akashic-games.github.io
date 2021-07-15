@@ -24,7 +24,8 @@ jobs:
           npm install
           RESULT = `npm run linkcheck | grep BROKEN`
           echo "::set-output name=RESULT::$RESULT"
-      - name: hoge
+        continue-on-error: true
+      - name: issue
         uses: JasonEtco/create-an-issue@v2
         if: steps.linkcheck.outcome == 'failure'
         env:
