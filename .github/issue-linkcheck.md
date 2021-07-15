@@ -1,5 +1,5 @@
 ---
-title: linkcheck action failed.
+title: scheduled check:link action failed.
 labels: invalid
 ---
 
