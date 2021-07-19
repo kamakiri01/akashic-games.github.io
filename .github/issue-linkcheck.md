@@ -1,5 +1,5 @@
 ---
-title: scheduled check:link action failed.
+title: scheduled check:link action failed. HOOOO
 labels: invalid
 ---
 
